@@ -98,23 +98,6 @@ ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
 
-# Linux
-*~
-.nfs*
-
-# ========================================
-# Node / Frontend (en caso de incluir Next.js)
-# ========================================
-
-node_modules/
-.next/
-out/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-*.tsbuildinfo
-
 # ========================================
 # Others
 # ========================================
