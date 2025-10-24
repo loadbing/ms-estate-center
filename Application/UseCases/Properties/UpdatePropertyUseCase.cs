@@ -12,7 +12,7 @@ namespace ms_estate_center.Application.UseCases.Properties
             _repository = repository;
         }
 
-        public async Task UpdateProperty(string id, Domain.Entities.Property property)
+        public async Task UpdateProperty(string id, Property property)
         {
             await _repository.Update(id, property);
         }

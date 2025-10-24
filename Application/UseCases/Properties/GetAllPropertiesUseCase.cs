@@ -12,7 +12,7 @@ namespace ms_estate_center.Application.UseCases.Properties
             _repository = repository;
         }
 
-        public async Task<List<Domain.Entities.Property>> GetAllProperties()
+        public async Task<List<Property>> GetAllProperties()
         {
             return await _repository.GetAll();
         }

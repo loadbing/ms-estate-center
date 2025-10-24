@@ -47,7 +47,6 @@ x86/
 # NuGet packages
 *.nupkg
 *.snupkg
-# The packages folder can be ignored if the repository uses package restore
 **/[Pp]ackages/*
 !**/[Pp]ackages/build/
 !**/[Pp]ackages/repositories.config
@@ -69,10 +68,6 @@ x86/
 # Dotnet Tools
 dotnet-tools.json
 
-# ========================================
-# Environment / Config
-# ========================================
-
 # User secrets
 secrets.json
 *.secret.json
@@ -82,10 +77,6 @@ appsettings.Local.json
 .env.*
 .envrc
 *.env.local
-
-# ========================================
-# OS / IDE / Editor Files
-# ========================================
 
 # macOS
 .DS_Store
@@ -97,10 +88,6 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
-
-# ========================================
-# Others
-# ========================================
 
 # Logs
 *.log

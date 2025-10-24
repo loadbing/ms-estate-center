@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using ms_estate_center.Application.UseCases.Properties;
 using ms_estate_center.Domain.Entities;
 
 namespace ms_estate_center.Adapter.In.Http.Properties
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class PropertiesController : ControllerBase
@@ -32,6 +34,7 @@ namespace ms_estate_center.Adapter.In.Http.Properties
             _updatePropertyUseCase = updatePropertyUseCase;
             _deletePropertyUseCase = deletePropertyUseCase;
         }
+
 
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] Property property)

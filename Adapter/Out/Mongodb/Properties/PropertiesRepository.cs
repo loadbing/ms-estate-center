@@ -19,6 +19,12 @@ namespace ms_estate_center.Adapter.Out.Mongodb.Properties
         public async Task<Property> GetById(string id) =>
             await _properties.Find(p => p.Id == id).FirstOrDefaultAsync();
 
+        public async Task<Property> GetByCode(string code) =>
+            await _properties.Find(p => p.Code == code).FirstOrDefaultAsync();
+            
+        public async Task<Property> GetByName(string name) =>
+            await _properties.Find(p => p.Name == name).FirstOrDefaultAsync();
+
         public async Task Create(Property property) =>
             await _properties.InsertOneAsync(property);
 

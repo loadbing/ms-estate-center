@@ -1,5 +1,4 @@
-﻿using ms_estate_center.Domain.Entities;
-using ms_estate_center.Adapter.Out.Mongodb.Properties;
+﻿using ms_estate_center.Adapter.Out.Mongodb.Properties;
 
 namespace ms_estate_center.Application.UseCases.Properties
 {

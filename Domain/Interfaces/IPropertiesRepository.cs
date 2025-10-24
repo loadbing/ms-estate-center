@@ -4,10 +4,12 @@ namespace ms_estate_center.Domain.Interfaces
 {
     public interface IPropertiesRepository
     {
-        Task<List<Property>> GetAllAsync();
-        Task<Property> GetByIdAsync(string id);
-        Task CreateAsync(Property property);
-        Task UpdateAsync(string id, Property property);
-        Task DeleteAsync(string id);
+        Task<List<Property>> GetAll();
+        Task<Property> GetById(string id);
+        Task<Property> GetByCode(string code);
+        Task<Property> GetByName(string name);
+        Task Create(Property property);
+        Task Update(string id, Property property);
+        Task Delete(string id);
     }
 }
