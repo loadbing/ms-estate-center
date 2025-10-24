@@ -10,8 +10,6 @@ namespace ms_estate_center.Adapter.In.Http.Properties
     [Route("api/[controller]")]
     public class PropertiesController : ControllerBase
     {
-        private readonly ILogger<PropertiesController> _logger;
-
         private readonly CreatePropertiesUseCase _createPropertiesUseCase;
         private readonly GetAllPropertiesUseCase _getAllPropertiesUseCase;
         private readonly GetPropertyByIdUseCase _getPropertyByIdUseCase;
@@ -23,11 +21,9 @@ namespace ms_estate_center.Adapter.In.Http.Properties
             GetAllPropertiesUseCase getAllPropertiesUseCase,
             GetPropertyByIdUseCase getPropertyByIdUseCase, 
             UpdatePropertyUseCase updatePropertyUseCase, 
-            DeletePropertyUseCase deletePropertyUseCase, 
-            ILogger<PropertiesController> logger
+            DeletePropertyUseCase deletePropertyUseCase
             )
         {
-            _logger = logger;
             _createPropertiesUseCase = createPropertiesUseCase;
             _getAllPropertiesUseCase = getAllPropertiesUseCase;
             _getPropertyByIdUseCase = getPropertyByIdUseCase;
