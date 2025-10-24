@@ -40,7 +40,7 @@ namespace ms_estate_center.Adapter.In.Http.Properties
         public async Task<IActionResult> Create([FromBody] Property property)
         {
             await _createPropertiesUseCase.CreateProperty(property);
-            return CreatedAtAction(nameof(GetById), new { id = property.Id }, property);
+            return CreatedAtAction(nameof(GetById), new { id = property.Id }, new { id = property.Id });
         }
 
         [HttpGet]

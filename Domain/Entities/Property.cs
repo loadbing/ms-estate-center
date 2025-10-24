@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using System.Collections;
+using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace ms_estate_center.Domain.Entities
@@ -23,6 +24,12 @@ namespace ms_estate_center.Domain.Entities
 
         [BsonElement("year")]
         public int year { get; set; }
+
+        [BsonElement("images")]
+        public List<string> Images { get; set; } = new List<string>();
+
+        [BsonElement("owner")]
+        public Owner Owner { get; set; } = new Owner();
     }
 }
 
