@@ -15,19 +15,24 @@ Asegúrate de tener instalados los siguientes componentes en tu entorno local:
 
 ## Configuración local
 
-Edita el archivo `appsettings.json` en la raíz del proyecto agregando los valores:
+Edita el archivo `appsettings.json` en la raíz del proyecto agregando los valores
+(Estos valores se tienen en la plataforma de aplicaciones en la nube Render)
 
+```bash
 MongoDB__ConnectionString
 MongoDB__DatabaseName
 Jwt__Key
 AESSettings__Key
 AESSettings__IV
+```
 
 ## Ejecución local
 
+```bash
 dotnet restore
 dotnet build
 dotnet watch run
+```
 
 ## Clonar el repositorio
 
