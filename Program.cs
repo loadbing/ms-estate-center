@@ -11,8 +11,6 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
 builder.Services.AddScoped<PropertiesRepository>();
 builder.Services.AddScoped<UsersRepository>();
 builder.Services.AddScoped<CreatePropertiesUseCase>();

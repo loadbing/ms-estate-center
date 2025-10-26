@@ -5,7 +5,7 @@ using ms_estate_center.Domain.Entities;
 
 namespace ms_estate_center.Adapter.In.Http.Properties
 {
-    [Authorize]
+    //[Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public class PropertiesController : ControllerBase
