@@ -51,13 +51,10 @@ Console.WriteLine(mongoDatabaseName);
 builder.Services.AddSingleton<IMongoClient>(_ =>
 {
     var settings = MongoClientSettings.FromConnectionString(mongoConnection);
-
     settings.SslSettings = new SslSettings
     {
-        EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12,
-        ServerCertificateValidationCallback = (_,__,___,____) => true
+        EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12
     };
-
     return new MongoClient(settings);
 });
 
