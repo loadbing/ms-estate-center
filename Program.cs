@@ -54,7 +54,8 @@ builder.Services.AddSingleton<IMongoClient>(_ =>
 
     settings.SslSettings = new SslSettings
     {
-        EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12
+        EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12,
+        ServerCertificateValidationCallback = (_,__,___,____) => true
     };
 
     return new MongoClient(settings);
