@@ -30,23 +30,11 @@ builder.Services.Configure<AESSettings>(options =>
     options.IV = Environment.GetEnvironmentVariable("AES_SETTINGS_IV") ?? builder.Configuration["AESSettings:IV"] ?? "";
 });
 
-Console.WriteLine("AES_SETTINGS_KEY = " + Environment.GetEnvironmentVariable("AES_SETTINGS_KEY"));
-Console.WriteLine("AES_SETTINGS_IV = " + Environment.GetEnvironmentVariable("AES_SETTINGS_IV"));
-
-
-
 var mongoConnection = Environment.GetEnvironmentVariable("MONGO_DB_CONNECTION_STRING") 
                       ?? builder.Configuration["MongoDB:ConnectionString"] ?? "";
 
 var mongoDatabaseName = Environment.GetEnvironmentVariable("MONGO_DB_DATABASE_NAME")
                         ?? builder.Configuration["MongoDB:DatabaseName"] ?? "";
-
-Console.WriteLine("MONGO_DB_CONNECTION_STRING = " + Environment.GetEnvironmentVariable("MONGO_DB_CONNECTION_STRING"));
-Console.WriteLine("MONGO_DB_DATABASE_NAME = " + Environment.GetEnvironmentVariable("MONGO_DB_DATABASE_NAME"));
-
-Console.WriteLine(mongoConnection);
-Console.WriteLine(mongoDatabaseName);
-
 
 builder.Services.AddSingleton<IMongoClient>(_ =>
 {
@@ -66,9 +54,6 @@ builder.Services.AddScoped(sp =>
 
 var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY")
              ?? builder.Configuration["Jwt:Key"] ?? "";
-             
-Console.WriteLine("JWT_KEY = " + Environment.GetEnvironmentVariable("JWT_KEY"));
-Console.WriteLine(jwtKey);
 
 builder.Services.AddAuthentication("Bearer").AddJwtBearer(options =>
 {
