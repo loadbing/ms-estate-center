@@ -10,6 +10,10 @@ RUN dotnet publish "ms-estate-center.csproj" -c Release -o /app/publish /p:UseAp
 FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS final
 WORKDIR /app
 
+RUN apt-get update && \
+    apt-get install -y ca-certificates && \
+    update-ca-certificates
+
 COPY --from=build /app/publish .
 
 ENV ASPNETCORE_URLS=http://+:8080
