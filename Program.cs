@@ -3,7 +3,6 @@ using ms_estate_center.Adapter.Out.Mongodb.Properties;
 using ms_estate_center.Adapter.Out.Mongodb.Users;
 using ms_estate_center.Application.UseCases.Properties;
 using ms_estate_center.Application.UseCases.Users;
-using ms_estate_center.Settings;
 using ms_estate_center.Adapter.Middlewares;
 using Microsoft.IdentityModel.Tokens;
 using ms_estate_center.Infrastructure.Settings;
@@ -24,37 +23,41 @@ builder.Services.AddScoped<ValidateUserUseCase>();
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.Configure<AESSettings>(builder.Configuration.GetSection("AESSettings"));
-
-builder.Services.Configure<MongoDbSettings>(
-    builder.Configuration.GetSection("MongoDB"));
-
-builder.Services.AddSingleton<IMongoClient>(sp =>
+builder.Services.Configure<AESSettings>(options =>
 {
-    var settings = builder.Configuration.GetSection("MongoDB").Get<MongoDbSettings>();
-    return new MongoClient(settings.ConnectionString);
+    options.Key = Environment.GetEnvironmentVariable("AES_SETTINGS_KEY") ?? builder.Configuration["AESSettings:Key"] ?? "";
+    options.IV = Environment.GetEnvironmentVariable("AES_SETTINGS_IV") ?? builder.Configuration["AESSettings:IV"] ?? "";
 });
+
+
+var mongoConnection = Environment.GetEnvironmentVariable("MONGO_DB_CONNECTION_STRING") 
+                      ?? builder.Configuration["MongoDB:ConnectionString"] ?? "";
+
+var mongoDatabaseName = Environment.GetEnvironmentVariable("MONGO_DB_DATABASE_NAME") 
+                        ?? builder.Configuration["MongoDB:DatabaseName"] ?? "";
+
+builder.Services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoConnection));
 
 builder.Services.AddScoped(sp =>
 {
-    var settings = builder.Configuration.GetSection("MongoDB").Get<MongoDbSettings>();
     var client = sp.GetRequiredService<IMongoClient>();
-    return client.GetDatabase(settings.DatabaseName);
+    return client.GetDatabase(mongoDatabaseName);
 });
 
+var jwtKey = Environment.GetEnvironmentVariable("JWT_KEY") 
+             ?? builder.Configuration["Jwt:Key"] ?? "";
+
 builder.Services.AddAuthentication("Bearer").AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
     {
-        options.TokenValidationParameters = new TokenValidationParameters
-        {
-            ValidateIssuer = false,
-            ValidateAudience = false,
-            ValidateIssuerSigningKey = true,
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])
-            ),
-            ClockSkew = TimeSpan.Zero
-        };
-    });
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey)),
+        ClockSkew = TimeSpan.Zero
+    };
+});
 
 
 var app = builder.Build();
