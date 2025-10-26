@@ -48,7 +48,17 @@ Console.WriteLine(mongoConnection);
 Console.WriteLine(mongoDatabaseName);
 
 
-builder.Services.AddSingleton<IMongoClient>(_ => new MongoClient(mongoConnection));
+builder.Services.AddSingleton<IMongoClient>(_ =>
+{
+    var settings = MongoClientSettings.FromConnectionString(mongoConnection);
+
+    settings.SslSettings = new SslSettings
+    {
+        EnabledSslProtocols = System.Security.Authentication.SslProtocols.Tls12
+    };
+
+    return new MongoClient(settings);
+});
 
 builder.Services.AddScoped(sp =>
 {
