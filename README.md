@@ -38,19 +38,19 @@ AESSettings__Key
 AESSettings__IV
 ```
 
+## Clonar el repositorio
+
+```bash
+git clone https://github.com/tu-usuario/ms-estate-center.git
+cd ms-estate-center 
+```
+
 ## Ejecución local
 
 ```bash
 dotnet restore
 dotnet build
 dotnet watch run
-```
-
-## Clonar el repositorio
-
-```bash
-git clone https://github.com/tu-usuario/ms-estate-center.git
-cd ms-estate-center 
 ```
 
 ## Swagger
