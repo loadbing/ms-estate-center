@@ -56,3 +56,8 @@ dotnet watch run
 ## Swagger
 
 [API en Swagger](https://ms-estate-center.onrender.com/swagger/index.html)
+
+## Licencia
+
+Este proyecto fue desarrollado como parte de una prueba técnica.
+Su uso y distribución están limitados a fines de evaluación y demostración.
