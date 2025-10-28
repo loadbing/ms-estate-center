@@ -57,14 +57,14 @@ namespace ms_estate_center.Adapter.In.Http.Properties
         public async Task<IActionResult> Update(string id, [FromBody] Property property)
         {
             await _updatePropertyUseCase.UpdateProperty(id, property);
-            return NoContent();
+            return Ok(id);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
             await _deletePropertyUseCase.DeleteProperty(id);
-            return NoContent();
+            return Ok(id);
         }
     }
 }
