@@ -3,7 +3,6 @@
 API RESTful construida con **ASP.NET Core 8.0** para la gestión de propiedades inmobiliarias.  
 Incluye autenticación JWT, conexión con MongoDB y cifrado AES para proteger datos sensibles.
 
-
 ## Requisitos previos
 
 Asegúrate de tener instalados los siguientes componentes en tu entorno local:
@@ -13,10 +12,23 @@ Asegúrate de tener instalados los siguientes componentes en tu entorno local:
 - [Git](https://git-scm.com/)
 - (Opcional) [Visual Studio Code](https://code.visualstudio.com/) o tu IDE preferido
 
+
+## Ambiente de Despliegue
+
+La API está desplegada en la plataforma [Railway](https://railway.com), lo que permite acceder a sus endpoints de forma pública y segura.
+
+Puedes consumirla utilizando la siguiente URL base:
+
+```bash
+https://ms-estate-center-production.up.railway.app/api
+
+```
+
 ## Configuración local
 
-Edita el archivo `appsettings.json` en la raíz del proyecto agregando los valores
-(Estos valores se tienen en la plataforma de aplicaciones en la nube Render)
+Edita el archivo `appsettings.json` ubicado en la raíz del proyecto y agrega los valores de configuración correspondientes.
+
+Estos valores se obtienen desde la plataforma de despliegue en la nube [Railway](https://railway.com), donde se encuentran definidas las variables de entorno del proyecto.
 
 ```bash
 MongoDB__ConnectionString
